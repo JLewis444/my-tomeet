@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/my-tomeet/static/css/main.5f361e03.chunk.css",
+    "main.js": "/my-tomeet/static/js/main.b8b3c293.chunk.js",
+    "main.js.map": "/my-tomeet/static/js/main.b8b3c293.chunk.js.map",
+    "runtime-main.js": "/my-tomeet/static/js/runtime-main.cd041a4a.js",
+    "runtime-main.js.map": "/my-tomeet/static/js/runtime-main.cd041a4a.js.map",
+    "static/js/2.972e35a9.chunk.js": "/my-tomeet/static/js/2.972e35a9.chunk.js",
+    "static/js/2.972e35a9.chunk.js.map": "/my-tomeet/static/js/2.972e35a9.chunk.js.map",
+    "index.html": "/my-tomeet/index.html",
+    "precache-manifest.74c7c3a8e4069ae753878ccbe37841e0.js": "/my-tomeet/precache-manifest.74c7c3a8e4069ae753878ccbe37841e0.js",
+    "service-worker.js": "/my-tomeet/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/my-tomeet/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.972e35a9.chunk.js.LICENSE.txt": "/my-tomeet/static/js/2.972e35a9.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/my-tomeet/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd041a4a.js",
+    "static/js/2.972e35a9.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.b8b3c293.chunk.js"
+  ]
+}
