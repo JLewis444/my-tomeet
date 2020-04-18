@@ -4,10 +4,12 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 
 class App extends Component {
+  updateEvents = () => {}
+  componentDidMount () {this.updateEvents()} 
   render() {
   return (
     <div className="App">
-      <CitySearch />
+      <CitySearch updateEvents={this.updateEvents} />
       <EventList />
     </div>
    );

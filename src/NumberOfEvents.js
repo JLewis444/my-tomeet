@@ -13,7 +13,7 @@ class NumberOfEvents extends Component {
 
      
     }
-}
+
 
 render() {
     return(
@@ -26,8 +26,9 @@ render() {
                onChange={this.handleInputChanged}
             />
         </div>
-    );
+    )
 
+    }
      
 }
 
