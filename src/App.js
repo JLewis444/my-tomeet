@@ -4,8 +4,8 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 
 class App extends Component {
-  updateEvents = () => {}
-  componentDidMount () {this.updateEvents()} 
+  updateEvents = (lat, lon) => {}
+  // componentDidMount () {this.updateEvents()} 
   render() {
   return (
     <div className="App">

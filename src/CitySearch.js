@@ -14,13 +14,13 @@ class CitySearch extends Component {
         getSuggestions(value).then(suggestions => this.setState({ suggestions }));
     }
 
-    handleItemClicked = (value) => {
-        this.setState({ query: value });
-        this.props.updateEvents();
+    handleItemClicked = (value, lat, lon) => {
+        this.setState({ query: value, suggestions: [] });
+        this.props.updateEvents(lat, lon);
     }
     
     render() {
-        // console.log(this.props);
+      
         return (
             <div className="CitySearch">
               <input 

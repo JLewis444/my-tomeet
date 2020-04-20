@@ -5,6 +5,7 @@ import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import { mockEvents } from '../mock-events';
+import NumberOfEvents from '../NumberOfEvents';
 
 describe('<App /> component', () => {
   let AppWrapper;
@@ -19,18 +20,52 @@ describe('<App /> component', () => {
   test('render CitySearch', () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
+
+  test('render NumberOfEvents', () => {
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+  })
 });
 
 
-describe('<App /> integration', () => {
-   
-  test('get list of events after user selects a city', async () => {
+
+describe("<App /> integration", () => {
+  test("get list of events after user selects a city", () => {
     const AppWrapper = mount(<App />);
     AppWrapper.instance().updateEvents = jest.fn();
     AppWrapper.instance().forceUpdate();
     const CitySearchWrapper = AppWrapper.find(CitySearch);
-    CitySearchWrapper.instance().handleItemClicked('value');
-    expect(AppWrapper.instance().updateEvents).toHaveBeenCalled(1);
+    CitySearchWrapper.instance().handleItemClicked("value", 1.1, 1.2);
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(1.1, 1.2);
+    AppWrapper.unmount();
   });
+
+  test('update list of events after user changes number of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.instance().updateEvents = jest.fn();
+    AppWrapper.instance().forceUpdate();
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    NumberOfEventsWrapper.instance().handleInputChanged({ target: { value: 1 } });
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledTimes(1);
+    expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(null, null, 1);
+    AppWrapper.unmount();
+  });
+
+  test('change state after get list of events', async () => {
+    const AppWrapper = shallow(<App />);
+    AppWrapper.instance().updateEvents(1.1, 1.2);
+    await AppWrapper.update();
+    expect(AppWrapper.state('events')).toEqual(mockEvents.events);
+    AppWrapper.unmount();
+  });
+
+  test('render correct list of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({ events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }] });
+    expect(AppWrapper.find('.event')).toHaveLength(4);
+    AppWrapper.unmount();
+  });
+
+
 
 });
