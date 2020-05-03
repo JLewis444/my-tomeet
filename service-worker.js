@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/my-tomeet/precache-manifest.11d1c372515a895293799582847de126.js"
+  "/my-tomeet/precache-manifest.32bdd36b1d1e900e69de37020b71d112.js"
 );
 
 self.addEventListener('message', (event) => {
