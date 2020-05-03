@@ -50,9 +50,15 @@ async function getEvents(lat, lon) {
     console.log(url);
        if (lat && lon) {
            url += '&lat=' + lat + '&lon=' +lon;
+       } 
+       try {
+        const result = await Axios.get(url);
+        return result.data.events; 
+       } catch (error) {
+           console.log(error.response);
+        return [];   
        }
-       const result = await Axios.get(url);
-       return result.data.events;
+      
 
       
    }

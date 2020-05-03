@@ -49,11 +49,11 @@ module.exports.refreshAccessToken = async (event) => {
   return {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': "https://JLewis444.github.io/my-tomeet/"
+      'Access-Control-Allow-Origin': "*"
     },
     body: JSON.stringify({
-      accessToken: info.data.access_token,
-      refreshToken : info.data.refresh_token
+      access_token: info.data.access_token,
+      refresh_token : info.data.refresh_token
     })
   }
 }
