@@ -9,7 +9,7 @@ class App extends Component {
   state = {events: []}
   updateEvents = (lat, lon) => {
     getEvents(lat, lon)
-    .then(events => this.setState({events}))
+    .then(events => {console.log(events); this.setState({events})})
     .catch(error => console.log(error))
   }
   // componentDidMount () {this.updateEvents()} 

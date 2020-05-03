@@ -12,7 +12,7 @@ class Event extends Component {
 
     render() {
         const { event } = this.props;
-        console.log(event); 
+     
         if (!event) {
             return <div>Loading...</div>
         } 

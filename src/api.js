@@ -38,13 +38,16 @@ if (token) {
 }
 
 async function getEvents(lat, lon) {
+   
     if (window.location.href.startsWith('http://localhost')) {
     return mockEvents.events;
  }
+ const token = await getAccessToken()
+ console.log(token);
    if (token) {
        let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
        + '&access_token=' + token;
-
+    console.log(url);
        if (lat && lon) {
            url += '&lat=' + lat + '&lon=' +lon;
        }
@@ -55,8 +58,8 @@ async function getEvents(lat, lon) {
    }
 
 }
-function getAccessToken() {
-    const accessToken = localStorage.getItem('access_Token');
+async function getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
     
     if(!accessToken) {
         const searchParams = new URLSearchParams(window.location.search);
@@ -85,24 +88,32 @@ function getAccessToken() {
 async function getOrRenewAccessToken(type, key) {
     let url;
     if (type === 'get') {
-        url = 'https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/token/'
+        url = 'https://yub5416fs5.execute-api.eu-central-1.amazonaws.com/dev/api/token/'
         + key;
     } else if (type === 'renew') {
-        url = 'https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/token/'
+        url = 'https://yub5416fs5.execute-api.eu-central-1.amazonaws.com/dev/api/refresh/'
         + key;
     }
 
 
-    const tokenInfo = await Axios.get(url);
+    // const tokenInfo = await Axios.get(url);
+    // console.log(tokenInfo);
+    // localStorage.setItem('access_token', tokenInfo.data.accessToken);
+    // localStorage.setItem('refresh_token', tokenInfo.data.refreshToken);
+    // localStorage.setItem('last_saved_time', Date.now());
+    
+        const tokenInfo = await Axios.get(url);
+        console.log(tokenInfo);
+        localStorage.setItem("access_token", tokenInfo.data.access_token);
+        localStorage.setItem("refresh_token", tokenInfo.data.refresh_token);
+        localStorage.setItem("last_saved_time", Date.now());
 
-    localStorage.setItem('access_token', tokenInfo.data.accessToken);
-    localStorage.setItem('refresh_token', tokenInfo.data.refreshToken);
-    localStorage.setItem('last_saved_time', Date.now());
+        return tokenInfo.data.access_token;
+      
 
-
-    return tokenInfo.data.accessToken;
+   
  }
 
-}
+
 
 export { getSuggestions, getEvents };
